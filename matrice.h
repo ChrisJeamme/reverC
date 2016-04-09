@@ -11,5 +11,8 @@ typedef struct cellule
 	struct cellule *bd;
 }cellule;
 
-typedef cellule * matrice;
+typedef cellule ** matrice;
 
+
+matrice creer_matrice();
+matrice init_matrice();

@@ -3,7 +3,8 @@
 #include "affichage.h"
 
 #define BLANC 7
-#define NOIR 0
+#define NOIR 4
+#define TAILLE 8
 
 void couleur_fond(int couleur) 
 {
@@ -15,26 +16,50 @@ void reset_couleurs()
 	printf("\033[0m");
 }
 
+void coloration(int couleur)
+{
+	couleur_fond(couleur);
+	printf("  ");
+	reset_couleurs();
+}
 
 void affiche_legende_couleurs() 
 {
 	/* affiche la legende des couleurs*/
 	printf("Legende :\n");
 	printf(" Pions de l'ordinateur : "); 
-	couleur_fond(NOIR); 
-	printf("  ");
-	reset_couleurs();
+	coloration(NOIR);
 	printf("\n"); 
 	printf(" Pions du joueur : "); 
-	couleur_fond(BLANC); 
-	printf("  ");
-	reset_couleurs();
+	coloration(BLANC);
 	printf("\n");
 }
 
 
-int main()
+void affiche_matrice(matrice M)
 {
-	affiche_legende_couleurs();
-	return 0;
+	int i, j;
+	printf("    A B C D E F G H\n");
+	printf("   _________________\n");
+	for (i=0; i<TAILLE; i++)
+	{
+		printf("%d | ", i+1);
+		for (j=0; j<TAILLE; j++)
+		{
+			if (M[i][j].couleur=='V')
+			{
+				printf(". ");
+			}
+			if (M[i][j].couleur=='B')
+			{
+				coloration(BLANC);
+			}
+			if (M[i][j].couleur=='N')
+			{
+				coloration(NOIR);
+			}
+		}
+		printf("|\n");
+	}
+	printf("  |_________________|\n");
 }
