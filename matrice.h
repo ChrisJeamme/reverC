@@ -1,3 +1,6 @@
+#ifndef _MATRICE_H_
+#define _MATRICE_H_
+
 typedef struct cellule
 {
 	char couleur;
@@ -16,3 +19,6 @@ typedef cellule ** matrice;
 
 matrice creer_matrice();
 matrice init_matrice();
+
+
+#endif
