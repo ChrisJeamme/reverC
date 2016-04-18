@@ -28,9 +28,9 @@ int verif_coup(char *coup)
 
 int convertir (char c)
 {
-	if (c>'0' && c<'9') //si c'est un chiffre
+	if (c>'0' && c<'9') /*si c'est un chiffre*/
 	{
-		return c-'1'; //car 1A correspond à M[0][0]
+		return c-'1'; /*car 1A correspond à M[0][0]*/
 	}
 	else if (c>='A' && c<'I')
 	{
@@ -42,7 +42,7 @@ int convertir (char c)
 int coup_valide (matrice M, int i, int j, int joueur)
 {
 	char pion_joueur, pion_adv;
-	if (joueur == 1) //Le joueur 1 est le joueur
+	if (joueur == 1) /*Le joueur 1 est le joueur*/
 	{
 		pion_joueur='B';
 		pion_adv='N';
@@ -60,7 +60,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 		return 0;
 	}
 
-	//On regarde si c'est valide en haut à gauche
+	/*On regarde si c'est valide en haut à gauche*/
 	x=i;
 	y=j;
 	k=0;
@@ -76,7 +76,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 	}
 
 
-	//En haut
+	/*En haut*/
 	x=i;
 	y=j;
 	k=0;
@@ -90,7 +90,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 		return 1;
 	}
 
-	// En haut à droite
+	/* En haut à droite */
 	x=i;
 	y=j;
 	k=0;
@@ -105,7 +105,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 		return 1;
 	}
 
-	// A gauche
+	/* A gauche */
 	x=i;
 	y=j;
 	k=0;
@@ -119,7 +119,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 		return 1;
 	}
 
-	// A droite
+	/* A droite */
 	x=i;
 	y=j;
 	k=0;
@@ -133,7 +133,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 		return 1;
 	}
 
-	// En bas à gauche
+	/* En bas à gauche */
 	x=i;
 	y=j;
 	k=0;
@@ -148,7 +148,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 		return 1;
 	}
 
-	// En bas
+	/* En bas */
 	x=i;
 	y=j;
 	k=0;
@@ -162,7 +162,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 		return 1;
 	}
 
-	// En bas à droite
+	/* En bas à droite */
 	x=i;
 	y=j;
 	k=0;
@@ -183,7 +183,7 @@ int coup_valide (matrice M, int i, int j, int joueur)
 matrice changer (matrice M, int i, int j, int joueur)
 {
 	char pion_joueur, pion_adv;
-	if (joueur == 1) //Le joueur 1 est le joueur
+	if (joueur == 1) /* Le joueur 1 est le joueur */
 	{
 		pion_joueur='B';
 		pion_adv='N';
@@ -213,7 +213,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 	}
 
 
-	//En haut
+	/*En haut */
 	x=i;
 	y=j;
 	while(M[x][y].h!=NULL && M[x][y].h->couleur == pion_adv)
@@ -226,7 +226,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 		changements[1] = 0;
 	}
 
-	// En haut à droite
+	/* En haut à droite */
 	x=i;
 	y=j;
 	while(M[x][y].hd!=NULL && M[x][y].hd->couleur == pion_adv)
@@ -240,7 +240,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 		changements[2] = 0;
 	}
 
-	// A gauche
+	/* A gauche */
 	x=i;
 	y=j;
 	while(M[x][y].g!=NULL && M[x][y].g->couleur == pion_adv)
@@ -253,7 +253,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 		changements[3] = 0;
 	}
 
-	// A droite
+	/* A droite */
 	x=i;
 	y=j;
 	while(M[x][y].d!=NULL && M[x][y].d->couleur == pion_adv)
@@ -266,7 +266,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 		changements[4] = 0;
 	}
 
-	// En bas à gauche
+	/* En bas à gauche */
 	x=i;
 	y=j;
 	while(M[x][y].bg!=NULL && M[x][y].bg->couleur == pion_adv)
@@ -280,7 +280,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 		changements[5] = 0;
 	}
 
-	// En bas
+	/* En bas */
 	x=i;
 	y=j;
 	while(M[x][y].b!=NULL && M[x][y].b->couleur == pion_adv)
@@ -292,7 +292,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 	{
 		changements[6] = 0;
 	}
-	// En bas à droite
+	/* En bas à droite */
 	x=i;
 	y=j;
 	while(M[x][y].bd!=NULL && M[x][y].bd->couleur == pion_adv)
@@ -385,7 +385,7 @@ matrice changer (matrice M, int i, int j, int joueur)
 }
 
 
-// Fonction qui retourne 1 s'il existe au moins un coup valide pour un joueur, 0 sinon
+/* Fonction qui retourne 1 s'il existe au moins un coup valide pour un joueur, 0 sinon */
 int peut_jouer(matrice M, int joueur)
 {
 	int i, j;
@@ -404,7 +404,7 @@ int peut_jouer(matrice M, int joueur)
 	else return 1;
 }
 
-// Fonction pour changer de joueur
+/* Fonction pour changer de joueur */
 int changer_joueur(joueur)
 {
 	if (joueur==1)
