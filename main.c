@@ -34,9 +34,18 @@ int main()
 				fscanf(stdin, "%s", coup);
 				if (verif_coup(coup))
 				{
-					i=convertir(coup[0]);
-					j=convertir(coup[1]);
+					if (verif_coup(coup) == 1)
+					{
+						i=convertir(coup[0]);
+						j=convertir(coup[1]);
+					}
+					else
+					{
+						j=convertir(coup[0]);
+						i=convertir(coup[1]);
+					}
 				}
+				printf("%d %d \n", i , j);
 			} while (!coup_valide(M, i, j, joueur));
 			M=changer(M, i, j, joueur);
 			joueur=changer_joueur(joueur);

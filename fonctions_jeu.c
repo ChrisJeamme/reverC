@@ -5,11 +5,25 @@
 
 int verif_coup(char *coup)
 {
-	if (strlen(coup)!=2 || coup[0]<'1' || coup[0]>'8' || coup[1]<'A' || coup[1]>'H')
+	if (strlen(coup)!=2)
 	{
 		return 0;	
 	}
-	else return 1;
+	if (coup[0]>'0' && coup[0]<'9')
+	{
+		if ((coup[1]>='A' && coup[1]<'I') || (coup[1]>'a' && coup[1]<'i'))
+		{
+			return 1;
+		}
+	}
+	if ((coup[0]>='A' && coup[0]<'I') || (coup[0]>'a' && coup[0]<'i'))
+	{
+		if (coup[1]>'0' && coup[1]<'9')
+		{
+			return 2;
+		}
+	}
+	return 0;
 }
 
 int convertir (char c)
@@ -18,10 +32,11 @@ int convertir (char c)
 	{
 		return c-'1'; //car 1A correspond à M[0][0]
 	}
-	else 
+	else if (c>='A' && c<'I')
 	{
 		return c-'A';
 	}
+	else return c-'a';
 }
 
 int coup_valide (matrice M, int i, int j, int joueur)
