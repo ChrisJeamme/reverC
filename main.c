@@ -45,7 +45,7 @@ int main()
 						i=convertir(coup[1]);
 					}
 				}
-				printf("%d %d \n", i , j);
+				
 			} while (!coup_valide(M, i, j, joueur));
 			M=changer(M, i, j, joueur);
 			joueur=changer_joueur(joueur);

@@ -11,12 +11,12 @@ int verif_coup(char *coup)
 	}
 	if (coup[0]>'0' && coup[0]<'9')
 	{
-		if ((coup[1]>='A' && coup[1]<'I') || (coup[1]>'a' && coup[1]<'i'))
+		if ((coup[1]>='A' && coup[1]<'I') || (coup[1]>='a' && coup[1]<'i'))
 		{
 			return 1;
 		}
 	}
-	if ((coup[0]>='A' && coup[0]<'I') || (coup[0]>'a' && coup[0]<'i'))
+	if ((coup[0]>='A' && coup[0]<'I') || (coup[0]>='a' && coup[0]<'i'))
 	{
 		if (coup[1]>'0' && coup[1]<'9')
 		{
