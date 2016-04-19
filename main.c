@@ -15,7 +15,7 @@ int main()
 	printf("Quel est votre nom ?\n");
 	fscanf(stdin, "%s", nom);
 
-	affiche_legende_couleurs();
+	affiche_legende_couleurs(nom);
 
 	while ( peut_jouer(M, 1) || peut_jouer(M, 2))
 	{

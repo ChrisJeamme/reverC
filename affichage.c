@@ -23,14 +23,14 @@ void coloration(int couleur)
 	reset_couleurs();
 }
 
-void affiche_legende_couleurs() 
+void affiche_legende_couleurs(char *nom) 
 {
 	/* affiche la legende des couleurs*/
 	printf("Legende :\n");
 	printf(" Pions de l'ordinateur : "); 
 	coloration(NOIR);
 	printf("\n"); 
-	printf(" Pions du joueur : "); 
+	printf(" Pions de %s : ", nom); 
 	coloration(BLANC);
 	printf("\n");
 }
@@ -39,16 +39,16 @@ void affiche_legende_couleurs()
 void affiche_matrice(matrice M)
 {
 	int i, j;
-	printf("    A B C D E F G H\n");
-	printf("   _________________\n");
+	printf("\n    A B C D E F G H\n");
+	printf("  ╔═════════════════╗\n");
 	for (i=0; i<TAILLE; i++)
 	{
-		printf("%d | ", i+1);
+		printf("%d ║ ", i+1);
 		for (j=0; j<TAILLE; j++)
 		{
 			if (M[i][j].couleur=='V')
 			{
-				printf(". ");
+				printf("• ");
 			}
 			if (M[i][j].couleur=='B')
 			{
@@ -59,7 +59,8 @@ void affiche_matrice(matrice M)
 				coloration(NOIR);
 			}
 		}
-		printf("|\n");
+		printf("║ %d\n", i+1);
 	}
-	printf("  |_________________|\n");
+	printf("  ╚═════════════════╝\n");
+	printf("    A B C D E F G H\n");
 }
