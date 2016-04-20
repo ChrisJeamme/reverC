@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "fonctions_jeu.h"
+#include "affichage.h"
 
 
 int verif_coup(char *coup)
@@ -410,4 +411,89 @@ int changer_joueur(joueur)
 	if (joueur==1)
 		return 2;
 	else return 1;
+}
+
+int calcul_gagnant(matrice M)
+{
+	int i, j, j1=0, j2=0;
+	for (i=0; i<8; i++)
+	{
+		for (j=0; j<8; j++)
+		{
+			if (M[i][j].couleur == 'B')
+				j1++;
+			if (M[i][j].couleur == 'N')
+				j2++;
+		}
+	}
+
+	if (j1 > j2)
+		return 1;
+	if (j1 < j2)
+		return 2;
+	return 3;
+}
+
+void affiche_gagnant(matrice M)
+{
+	int gagnant=calcul_gagnant(M);
+
+	if (gagnant==1)
+	{
+		printf("Félicitations ! Vous avez gagné contre l'ordinateur\n");
+	}
+	if (gagnant==2)
+	{
+		printf("L'ordinateur a remporté la partie.\n");
+	}
+	if (gagnant==3)
+	{
+		printf("Egalité !\n");
+	}
+}
+
+matrice partie(matrice M, char *nom, int joueur)
+{
+	char coup[2];
+	char *ordi="l\'ordinateur";
+	int i, j;
+
+	while ( peut_jouer(M, 1) || peut_jouer(M, 2))
+	{
+		if (!peut_jouer(M, joueur))
+		{
+			printf("%s ne peut pas jouer", (joueur==1)?nom:ordi);
+			joueur=changer_joueur(joueur);
+		}
+		else
+		{
+			printf("Au tour de %s : \n", (joueur==1)?nom:ordi);
+			do
+			{	
+				affiche_matrice(M);
+				printf("Rentrez un coup :\n");
+				fscanf(stdin, "%s", coup);
+				if (verif_coup(coup))
+				{
+					if (verif_coup(coup) == 1)
+					{
+						i=convertir(coup[0]);
+						j=convertir(coup[1]);
+					}
+					else
+					{
+						j=convertir(coup[0]);
+						i=convertir(coup[1]);
+					}
+				}
+				
+			} while (!coup_valide(M, i, j, joueur));
+			M=changer(M, i, j, joueur);
+			joueur=changer_joueur(joueur);
+			purger();
+			clear();
+		}
+
+	}
+	return M;
 }

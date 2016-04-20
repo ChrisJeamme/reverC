@@ -6,6 +6,18 @@
 #define NOIR 4
 #define TAILLE 8
 
+void purger() /*Sert a purger stdin*/
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+    {}
+}
+
+void clear()
+{
+	system("clear");
+}
+
 void couleur_fond(int couleur) 
 {
 	printf("\033[4%dm", couleur);
